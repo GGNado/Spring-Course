@@ -1,9 +1,10 @@
-package com.giggi.firstproject.security;
+package com.giggi.firstproject.security.jwt;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +22,7 @@ public class JwtUtils {
     @Value("${spring.app.jwtSecret}")
     private String jwtSecret;
 
+    @Getter
     @Value("${spring.app.jwtExpirationMs}")
     private int jwtExpirationMs;
 
@@ -71,4 +73,5 @@ public class JwtUtils {
         }
         return false;
     }
+
 }

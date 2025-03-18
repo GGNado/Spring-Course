@@ -1,7 +1,6 @@
-package com.giggi.firstproject.service;
+package com.giggi.firstproject.service.def;
 
 import com.giggi.firstproject.entity.Employee;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

@@ -1,15 +1,14 @@
-package com.giggi.firstproject.security;
+package com.giggi.firstproject.init;
 
 
-import com.giggi.firstproject.dao.AuthoritieRepository;
-import com.giggi.firstproject.dao.EmployeeRepository;
+import com.giggi.firstproject.repository.AuthoritieRepository;
+import com.giggi.firstproject.repository.EmployeeRepository;
 import com.giggi.firstproject.entity.Authoritie;
 import com.giggi.firstproject.entity.Employee;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 

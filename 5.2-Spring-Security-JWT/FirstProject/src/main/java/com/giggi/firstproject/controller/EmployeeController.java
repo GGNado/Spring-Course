@@ -1,11 +1,10 @@
-package com.giggi.firstproject.rest;
+package com.giggi.firstproject.controller;
 
 import com.giggi.firstproject.entity.Employee;
-import com.giggi.firstproject.exception.employee.EmployeeNotFoundException;
-import com.giggi.firstproject.exception.general.IdNotValidException;
-import com.giggi.firstproject.service.EmployeeService;
+import com.giggi.firstproject.exception.custom.EmployeeNotFoundException;
+import com.giggi.firstproject.exception.custom.IdNotValidException;
+import com.giggi.firstproject.service.def.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

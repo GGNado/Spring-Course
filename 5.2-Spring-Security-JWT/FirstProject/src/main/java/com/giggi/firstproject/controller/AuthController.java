@@ -1,24 +1,24 @@
-package com.giggi.firstproject.rest;
+package com.giggi.firstproject.controller;
 
-import com.giggi.firstproject.entity.Employee;
-import com.giggi.firstproject.entity.LoginRequest;
-import com.giggi.firstproject.security.JwtUtils;
+import com.giggi.firstproject.dto.LoginRequest;
+import com.giggi.firstproject.dto.LoginResponse;
+import com.giggi.firstproject.entity.LoginRegistry;
+import com.giggi.firstproject.security.jwt.JwtUtils;
+import com.giggi.firstproject.service.def.LoginRegistryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,33 +27,22 @@ import java.util.stream.Collectors;
 @RestController
 public class AuthController {
 
-    @Autowired
+
     private JwtUtils jwtUtils;
+    private AuthenticationManager authenticationManager;
+    private LoginRegistryService loginRegistryService;
 
     @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @GetMapping("/hello")
-    public String sayHello(){
-        return "Hello";
+    public AuthController(JwtUtils jwtUtils, AuthenticationManager authenticationManager, LoginRegistryService loginRegistryService) {
+        this.jwtUtils = jwtUtils;
+        this.authenticationManager = authenticationManager;
+        this.loginRegistryService = loginRegistryService;
     }
 
-
-
-    @GetMapping("/user")
-    public String userEndpoint(){
-        return "Hello, User!";
-    }
-
-    @GetMapping("/admin")
-    public String adminEndpoint(){
-        return "Hello, Admin!";
-    }
 
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
-        System.out.println("Login request: " + loginRequest);
         Authentication authentication;
         try {
             authentication = authenticationManager
@@ -75,8 +64,11 @@ public class AuthController {
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
+        LoginResponse loginResponse = new LoginResponse(jwtToken, userDetails.getUsername(), roles, jwtUtils.getJwtExpirationMs());
+        LoginRegistry loginRegistry = new LoginRegistry(0, userDetails.getUsername(), LocalDate.now().toString(), LocalTime.now().toString(), "12.12.12.12", true);
 
 
-        return ResponseEntity.ok(jwtToken);
+        loginRegistryService.registerLogin(loginRegistry);
+        return ResponseEntity.ok(loginResponse);
     }
 }

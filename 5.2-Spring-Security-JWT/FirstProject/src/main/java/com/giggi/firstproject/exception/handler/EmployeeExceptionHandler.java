@@ -1,6 +1,8 @@
-package com.giggi.firstproject.exception.employee;
+package com.giggi.firstproject.exception.handler;
 
-import com.giggi.firstproject.exception.general.IdNotValidException;
+import com.giggi.firstproject.exception.custom.EmployeeErrorResponse;
+import com.giggi.firstproject.exception.custom.EmployeeNotFoundException;
+import com.giggi.firstproject.exception.custom.IdNotValidException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

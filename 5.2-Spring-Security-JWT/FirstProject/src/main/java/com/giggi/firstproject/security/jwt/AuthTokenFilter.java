@@ -1,4 +1,4 @@
-package com.giggi.firstproject.security;
+package com.giggi.firstproject.security.jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

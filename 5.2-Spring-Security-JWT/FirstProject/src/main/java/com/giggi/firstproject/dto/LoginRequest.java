@@ -1,4 +1,4 @@
-package com.giggi.firstproject.entity;
+package com.giggi.firstproject.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,9 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 
-
 public class LoginRequest {
     private String username;
     private String password;
-
 }

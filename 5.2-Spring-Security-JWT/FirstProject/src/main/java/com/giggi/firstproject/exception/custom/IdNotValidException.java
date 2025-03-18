@@ -1,4 +1,4 @@
-package com.giggi.firstproject.exception.general;
+package com.giggi.firstproject.exception.custom;
 
 public class IdNotValidException extends RuntimeException{
     public IdNotValidException(String message) {

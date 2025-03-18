@@ -1,4 +1,4 @@
-package com.giggi.firstproject.exception.employee;
+package com.giggi.firstproject.exception.custom;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

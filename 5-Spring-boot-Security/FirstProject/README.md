@@ -125,6 +125,7 @@ public class Authoritie {
     @JoinColumn(name = "users_id")
     @JsonIgnore
     private Employee users;
+}
 ```
 
 ⚠️ **Nota Bene** ⚠️

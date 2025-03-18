@@ -1,4 +1,4 @@
-package com.giggi.firstproject.security;
+package com.giggi.firstproject.security.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;

@@ -1,8 +1,9 @@
 package com.giggi.firstproject.service;
 
-import com.giggi.firstproject.dao.EmployeeRepository;
+import com.giggi.firstproject.repository.EmployeeRepository;
 import com.giggi.firstproject.entity.Employee;
-import com.giggi.firstproject.exception.employee.EmployeeNotFoundException;
+import com.giggi.firstproject.exception.custom.EmployeeNotFoundException;
+import com.giggi.firstproject.service.def.EmployeeService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
